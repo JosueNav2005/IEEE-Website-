@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #003C6B;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+}
+
+.logo img {
+    width: 70px;
+    height: auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.nav-links a:hover {
+    color: #a9c9e8;
+}
+
+.join-btn {
+    background-color: white;
+    color: #003C6B;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.join-btn:hover {
+    background-color: #a9c9e8;
+}
+
+.hero {
+    background-image: url('assets/img/home-picture.JPEG');
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    padding: 350px;
+}
+
+.hero h1 {
+    transform: translateY(-310px);
+    color: #003C6B;
+    font-size: 80px;
+    font-weight: 800;
+}
+
+.hero p {
+    transform:translateY(-320px);
+    color: #003C6B;
+    font-size: 50px;
+    margin-top: 10px;
+}
+
+.mission{
+    background-color: #FDC700;
+    display: flex;
+    gap: 120px;
+}
+
+.mission h2{ 
+    color:#003C6B;
+    font-size: 50px;
+}
+
+.mission p{
+    color: #003C6B;
+    font-size: 30px;
+
+}
+
+.mission img{
+    width: 600px;
+    height: 600px;
+    border-radius: 100px;
+    
+}
+
+.calendar-wrapper {
+    max-width: 300px;
+    
+}
