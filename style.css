@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -57,7 +61,10 @@ nav {
     background-color: #a9c9e8;
 }
 
-.hero {
+
+/* ---- Home Section ---- */
+
+.home {
     background-image: url('assets/img/home-picture.JPEG');
     background-position: center;
     background-size: cover;
@@ -65,19 +72,25 @@ nav {
     padding: 350px;
 }
 
-.hero h1 {
+.home h1 {
     transform: translateY(-310px);
     color: #003C6B;
     font-size: 80px;
     font-weight: 800;
 }
 
-.hero p {
+.home p {
     transform: translateY(-320px);
     color: #003C6B;
     font-size: 50px;
     margin-top: 10px;
 }
+
+
+
+
+/* ---- About Us Section ---- */
+
 
 .about-us {
     background-color: white;
@@ -107,17 +120,29 @@ nav {
     border-radius: 100px;
 }
 
+/* ---- Calendar Section ---- */
+.calendar {
+    background-color: #e6f2fa;
+    padding: 100px 40px;
+}
+
 .calendar h3 {
     color: #003C6B;
-    font-size: 100px;
+    font-size: 50px;
     text-align: center;
+    text-decoration: underline;
+    text-decoration-color: #003C6B;
+    text-underline-offset: 13px;
+    text-decoration-thickness: 10px;
+    transform: translateY(75px);
 }
 
 .calendar-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    padding: 100px;
+    transform: translateY(75px);
 }
 
 .team {
@@ -253,4 +278,43 @@ nav {
     width: 18px;
     height: 18px;
     fill: white;
+}
+
+
+/* footer */
+
+.site-footer {
+    background-color: #003C6B;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.footer-logo {
+    width: 50px;
+    height: auto;
+}
+
+.footer-name {
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.footer-socials .social-icon {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.footer-copyright {
+    color: #cddced;
+    font-size: 0.85rem;
+    margin-top: 20px;
 }

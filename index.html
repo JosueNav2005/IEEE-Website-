@@ -15,11 +15,11 @@
         </a>
 
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about-us">About Us</a></li>
             <li><a href="#">Projects</a></li>
-            <li><a href="#">Committees</a></li>
-            <li><a href="#">Events</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#calendar">Events</a></li>
             
         </ul>
 
@@ -28,9 +28,9 @@
 </header>
 
 
-<!-- The hero section is a prominent area that welcomes visitors to the website -->
+<!-- The home section is a prominent area that welcomes visitors to the website -->
 
-<section class="hero">
+<section class="home">
     <h1>Welcome to UCSC IEEE</h1>
     <p>Advancing Technology for Humanity</p>
 </section>
@@ -239,7 +239,7 @@
 </section>
 
 <!-- The calendar section embeds a Google Calendar to display upcoming events and activities -->
-<section class="calendar" >
+<section id="calendar" class="calendar" >
     <h3>Stay Connected</h3>
     <div class="calendar-wrapper" >
     <iframe src="https://calendar.google.com/calendar/embed?src=ieeeucsc26%40gmail.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
@@ -251,5 +251,29 @@
 </body>
 </html>
 
+<!-- The footer section contains the logo, name, social media links, and copyright information -->
+ 
+<footer class="site-footer">
+    <img src="assets/img/logo.png" alt="IEEE Logo" class="footer-logo">
+
+    <p class="footer-name">IEEE at UC Santa Cruz</p>
+
+    <div class="footer-socials">
+        <a href="mailto:ieeeucsc26@gmail.com" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="social-icon">
+                <path d="M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6H4zm16 2.24l-7.4 5.55a1 1 0 0 1-1.2 0L4 8.24V18h16V8.24z"/>
+            </svg>
+        </a>
+        <a href="https://www.instagram.com/yourclubhandle" target="_blank" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="social-icon">
+                <path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8C2.3 4 3.9 2.4 7.1 2.3c1.3-.1 1.6-.1 4.9-.1zM12 0C8.7 0 8.3 0 7 .1c-4.4.2-6.8 2.6-7 7C0 8.7 0 9.1 0 12s0 3.3.1 4.6c.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24s3.7 0 5-.1c4.4-.2 6.8-2.6 7-7 .1-1.3.1-1.7.1-4.6s0-3.3-.1-4.6c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.4a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0z"/>
+            </svg>
+        </a>
+    </div>
+
+    <p class="footer-copyright">&copy; 2026 IEEE Student Branch at UC Santa Cruz. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
+
