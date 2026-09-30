@@ -10,7 +10,10 @@ body {
 }
 
 header {
-    background-color: #003C6B;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(0, 60, 107, 0.9);
 }
 
 nav {
@@ -70,37 +73,244 @@ nav {
 }
 
 .hero p {
-    transform:translateY(-320px);
+    transform: translateY(-320px);
     color: #003C6B;
     font-size: 50px;
     margin-top: 10px;
 }
 
-.mission{
-    background-color: #FDC700;
+.about-us {
+    background-color: white;
     display: flex;
     gap: 120px;
+    padding: 100px 40px;
 }
 
-.mission h2{ 
-    color:#003C6B;
+.about-us-text h2 {
+    text-decoration: underline;
+    text-decoration-color: #003C6B;
+    text-underline-offset: 13px;
+    text-decoration-thickness: 10px;
+    color: #003C6B;
     font-size: 50px;
 }
 
-.mission p{
+.about-us-text p {
+    transform: translateY(20px);
     color: #003C6B;
     font-size: 30px;
-
 }
 
-.mission img{
+.mission img {
     width: 600px;
     height: 600px;
     border-radius: 100px;
-    
+}
+
+.calendar h3 {
+    color: #003C6B;
+    font-size: 100px;
+    text-align: center;
 }
 
 .calendar-wrapper {
-    max-width: 300px;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.team {
+    text-align: center;
+    padding: 80px 40px;
+    background-color: #ffffff;
+}
+
+.team h2 {
+    color: #003C6B;
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.team-subtitle {
+    color: #003C6B;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.team-card {
+    width: 220px;
+    height: 320px;
+    perspective: 1000px;
+}
+
+
+.team-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.team-card h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-top: 15px;
+}
+
+.team-card p {
+    color: #cddced;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 28px;
+    height: 28px;
+    fill: #003C6B;
+}
+
+.social-link:hover .social-icon {
+    fill: #a9c9e8;
+}
+
+.card-socials .social-icon {
+    width: 18px;
+    height: 18px;
+    fill: white;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.team-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    background-color: #003C6B;
+    overflow: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.card-back h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.card-intro {
+    color: #cddced;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.team-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    background-color: #003C6B;
+    overflow: hidden;
+}
+
+.card-front img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-front h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-top: 15px;
+}
+
+.card-front p {
+    color: #cddced;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.card-back h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.card-intro {
+    color: #cddced;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.card-socials {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.card-socials .social-icon {
+    width: 18px;
+    height: 18px;
+    fill: white;
 }
