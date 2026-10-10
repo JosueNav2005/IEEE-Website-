@@ -10,27 +10,27 @@
 <!-- The header section contains the navigation bar with the logo, navigation links -->
 <header>
     <nav>
-        <a href="#" class="logo">
+        <a href="#home" class="logo">
             <img src="assets/img/logo.png" alt="IEEE Logo">
         </a>
 
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about-us">About Us</a></li>
-            <li><a href="#">Projects</a></li>
+            <li><a href="projects.html">Projects</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#calendar">Events</a></li>
             
         </ul>
 
-        <a href="#" class="join-btn">Join IEEE</a>
+        <a href="https://forms.gle/xPw1YNsKFqso948z6" target="_blank" class="join-btn">Join IEEE</a>
     </nav>
 </header>
 
 
 <!-- The home section is a prominent area that welcomes visitors to the website -->
 
-<section class="home">
+<section id="home" class="home">
     <h1>Welcome to UCSC IEEE</h1>
     <p>Advancing Technology for Humanity</p>
 </section>
@@ -43,7 +43,24 @@
     <h2>About Us </h2>
     <p>something goes here talks about what our purpose is</p>
     </div>
-    <img src="assets/img/coming-soon.jpeg" alt="Coming soon">
+
+    <!-- Photo slider, click the arrows or dots to slide between photos -->
+    <div class="slider">
+        <div class="slider-track">
+            <img src="assets/img/coming-soon.jpeg" alt="Coming soon">
+            <img src="assets/img/home-picture.JPEG" alt="UCSC campus">
+            <img src="assets/img/coming-soon.jpeg" alt="Coming soon">
+        </div>
+
+        <button class="slider-arrow prev" aria-label="Previous photo">&#10094;</button>
+        <button class="slider-arrow next" aria-label="Next photo">&#10095;</button>
+
+        <div class="slider-dots">
+            <button class="slider-dot active" aria-label="Photo 1"></button>
+            <button class="slider-dot" aria-label="Photo 2"></button>
+            <button class="slider-dot" aria-label="Photo 3"></button>
+        </div>
+    </div>
 </section>
 
 <!-- Meet our Team section introduces the team members with their photos, names, and roles -->
