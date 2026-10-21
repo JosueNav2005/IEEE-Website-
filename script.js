@@ -83,3 +83,70 @@ if (menuToggle && navLinks) {
         });
     });
 }
+
+
+//Opens and closes the Socials drop-down in the nav, closes it when clicking anywhere else or pressing Escape
+
+const dropdown = document.querySelector('.dropdown');
+
+if (dropdown) {
+    const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+
+    function setDropdown(isOpen) {
+        dropdown.classList.toggle('open', isOpen);
+        dropdownToggle.setAttribute('aria-expanded', isOpen);
+    }
+
+    dropdownToggle.addEventListener('click', () => {
+        setDropdown(!dropdown.classList.contains('open'));
+    });
+
+    document.addEventListener('click', event => {
+        if (!dropdown.contains(event.target)) {
+            setDropdown(false);
+        }
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            setDropdown(false);
+        }
+    });
+
+    dropdown.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => setDropdown(false));
+    });
+}
+
+
+//Slides sections in as they scroll into view. Things that appear together are staggered so they come in one after another
+
+const revealItems = document.querySelectorAll('[data-reveal]');
+
+if ('IntersectionObserver' in window && revealItems.length) {
+    document.documentElement.classList.add('js-reveal');
+
+    const revealObserver = new IntersectionObserver(entries => {
+        const visible = entries.filter(entry => entry.isIntersecting);
+
+        visible.forEach((entry, i) => {
+            entry.target.style.transitionDelay = `${Math.min(i, 5) * 0.1}s`;
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    revealItems.forEach(item => revealObserver.observe(item));
+}
+
+
+//Adds a shadow under the nav bar once the page is scrolled
+
+const header = document.querySelector('header');
+
+function updateHeaderShadow() {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+}
+
+window.addEventListener('scroll', updateHeaderShadow, { passive: true });
+updateHeaderShadow();

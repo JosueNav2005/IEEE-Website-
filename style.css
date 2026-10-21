@@ -1,3 +1,12 @@
+/* Club colors, every color on the site comes from these */
+:root {
+    --black: #000000;
+    --blue: #1e70d5;
+    --yellow: #fbc700;
+    --cream: #fffbdb;
+    --white: #ffffff;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -9,7 +18,7 @@ html {
 }
 
 body {
-    background-color: #ffffff;
+    background-color: var(--white);
     font-family: Arial, sans-serif;
 }
 
@@ -17,7 +26,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: rgba(0, 60, 107, 0.9);
+    background-color: rgba(30, 112, 213, 0.95);
 }
 
 nav {
@@ -29,8 +38,9 @@ nav {
 }
 
 .logo img {
-    width: 70px;
-    height: auto;
+    display: block;
+    height: 56px;
+    width: auto;
 }
 
 .nav-links {
@@ -40,18 +50,109 @@ nav {
 }
 
 .nav-links a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
     font-size: 25px;
 }
 
 .nav-links a:hover {
-    color: #a9c9e8;
+    color: var(--yellow);
+}
+
+/* ---- Socials drop-down in the nav ---- */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: var(--white);
+    font: inherit;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.dropdown-toggle:hover,
+.dropdown.open .dropdown-toggle {
+    color: var(--yellow);
+}
+
+.dropdown-arrow {
+    font-size: 0.6em;
+    transition: transform 0.2s ease;
+}
+
+.dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 190px;
+    list-style: none;
+    padding: 8px 0;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown.open .dropdown-menu {
+    display: block;
+}
+
+/* Opens on hover with a mouse. The ::after fills the gap so the menu doesn't close on the way down */
+@media (hover: hover) and (min-width: 901px) {
+    .dropdown::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        height: 12px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown:hover .dropdown-toggle {
+        color: var(--yellow);
+    }
+}
+
+.nav-links .dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    color: var(--black);
+    font-size: 18px;
+}
+
+.nav-links .dropdown-menu a:hover {
+    background-color: var(--cream);
+    color: var(--blue);
+}
+
+.dropdown-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    fill: var(--blue);
 }
 
 .join-btn {
-    background-color: white;
-    color: #003C6B;
+    background-color: var(--yellow);
+    color: var(--black);
     padding: 10px 20px;
     border-radius: 20px;
     text-decoration: none;
@@ -59,7 +160,7 @@ nav {
 }
 
 .join-btn:hover {
-    background-color: #a9c9e8;
+    background-color: var(--white);
 }
 
 /* Hamburger menu button, hidden until the screen gets small */
@@ -79,7 +180,7 @@ nav {
 .menu-toggle span {
     display: block;
     height: 3px;
-    background-color: white;
+    background-color: var(--white);
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -106,8 +207,8 @@ nav {
     background-size: cover;
     text-align: center;
     /* Fills the screen below the nav bar (svh keeps it right on phones when the address bar shows) */
-    min-height: calc(100vh - 73px);
-    min-height: calc(100svh - 73px);
+    min-height: calc(100vh - 86px);
+    min-height: calc(100svh - 86px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,13 +216,13 @@ nav {
 }
 
 .home h1 {
-    color: #003C6B;
+    color: var(--black);
     font-size: clamp(2.5rem, 8vw, 80px);
     font-weight: 800;
 }
 
 .home p {
-    color: #003C6B;
+    color: var(--black);
     font-size: clamp(1.4rem, 4.5vw, 50px);
     margin-top: 10px;
 }
@@ -133,25 +234,40 @@ nav {
 
 
 .about-us {
-    background-color: white;
+    background-color: var(--white);
     display: flex;
-    gap: 120px;
+    align-items: center;
+    gap: 80px;
     padding: 100px 40px;
 }
 
 .about-us-text h2 {
     text-decoration: underline;
-    text-decoration-color: #003C6B;
+    text-decoration-color: var(--yellow);
     text-underline-offset: 13px;
     text-decoration-thickness: 10px;
-    color: #003C6B;
+    color: var(--blue);
     font-size: 50px;
 }
 
+.about-us-text h2 {
+    margin-bottom: 30px;
+}
+
 .about-us-text p {
-    margin-top: 30px;
-    color: #003C6B;
-    font-size: 30px;
+    color: var(--black);
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.about-us-text h3 {
+    color: var(--blue);
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+
+.about-us-text p + h3 {
+    margin-top: 24px;
 }
 
 .about-us-text {
@@ -191,14 +307,14 @@ nav {
     height: 50px;
     border: none;
     border-radius: 50%;
-    background-color: rgba(0, 60, 107, 0.7);
-    color: white;
+    background-color: rgba(30, 112, 213, 0.8);
+    color: var(--white);
     font-size: 22px;
     cursor: pointer;
 }
 
 .slider-arrow:hover {
-    background-color: #003C6B;
+    background-color: var(--blue);
 }
 
 .slider-arrow.prev {
@@ -221,14 +337,14 @@ nav {
 .slider-dot {
     width: 14px;
     height: 14px;
-    border: 2px solid white;
+    border: 2px solid var(--white);
     border-radius: 50%;
     background-color: transparent;
     cursor: pointer;
 }
 
 .slider-dot.active {
-    background-color: white;
+    background-color: var(--yellow);
 }
 
 .mission img {
@@ -239,16 +355,16 @@ nav {
 
 /* ---- Calendar Section ---- */
 .calendar {
-    background-color: #e6f2fa;
+    background-color: var(--cream);
     padding: 80px 40px;
 }
 
 .calendar h2 {
-    color: #003C6B;
+    color: var(--blue);
     font-size: 50px;
     text-align: center;
     text-decoration: underline;
-    text-decoration-color: #003C6B;
+    text-decoration-color: var(--yellow);
     text-underline-offset: 13px;
     text-decoration-thickness: 10px;
 }
@@ -270,26 +386,26 @@ nav {
 .team {
     text-align: center;
     padding: 80px 40px;
-    background-color: #ffffff;
+    background-color: var(--white);
 
 }
 
 .team h2 {
-    color: #003C6B;
+    color: var(--blue);
     font-size: 3rem;
     font-weight: 800;
     text-decoration: underline;
-    text-decoration-color: #003C6B;
+    text-decoration-color: var(--yellow);
     text-underline-offset: 13px;
     text-decoration-thickness: 10px;
 }
 
 .team-subtitle {
-    color: #003C6B;
+    color: var(--black);
     font-size: 1.3rem;
     font-weight: 600;
-    margin-bottom: 50px;
-    transform: translateY(20px);
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .team-grid {
@@ -309,11 +425,11 @@ nav {
 .social-icon {
     width: 28px;
     height: 28px;
-    fill: #003C6B;
+    fill: var(--blue);
 }
 
 .social-link:hover .social-icon {
-    fill: #a9c9e8;
+    fill: var(--yellow);
 }
 
 /* ---- Flip card ---- */
@@ -344,7 +460,7 @@ nav {
     height: 100%;
     backface-visibility: hidden;
     border-radius: 15px;
-    background-color: #003C6B;
+    background-color: var(--blue);
     overflow: hidden;
 }
 
@@ -356,13 +472,13 @@ nav {
 }
 
 .card-front h3 {
-    color: white;
+    color: var(--white);
     font-size: 1.3rem;
     margin-top: 15px;
 }
 
 .card-front p {
-    color: #cddced;
+    color: var(--cream);
     font-size: 1rem;
     margin-top: 5px;
 }
@@ -378,13 +494,13 @@ nav {
 }
 
 .card-back h3 {
-    color: white;
+    color: var(--white);
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
 .card-intro {
-    color: #cddced;
+    color: var(--cream);
     font-size: 0.9rem;
     line-height: 1.4;
 }
@@ -399,25 +515,25 @@ nav {
 .card-socials .social-icon {
     width: 18px;
     height: 18px;
-    fill: white;
+    fill: var(--white);
 }
 
 
 /* footer */
 
 .site-footer {
-    background-color: #003C6B;
+    background-color: var(--black);
     text-align: center;
     padding: 40px 20px;
 }
 
 .footer-logo {
-    width: 50px;
+    width: 80px;
     height: auto;
 }
 
 .footer-name {
-    color: white;
+    color: var(--white);
     font-weight: bold;
     margin-top: 10px;
 }
@@ -432,11 +548,11 @@ nav {
 .footer-socials .social-icon {
     width: 24px;
     height: 24px;
-    fill: white;
+    fill: var(--white);
 }
 
 .footer-copyright {
-    color: #cddced;
+    color: var(--cream);
     font-size: 0.85rem;
     margin-top: 20px;
 }
@@ -449,12 +565,12 @@ nav {
 }
 
 .projects h1 {
-    color: #003C6B;
+    color: var(--blue);
     font-size: 80px;
     font-weight: 800;
     margin-bottom: 50px;
     text-decoration: underline;
-    text-decoration-color: #003C6B;
+    text-decoration-color: var(--yellow);
     text-underline-offset: 13px;
     text-decoration-thickness: 10px;
 }
@@ -485,9 +601,137 @@ body.fade-out {
     to   { opacity: 1; }
 }
 
-/* Keeps section titles from hiding under the sticky nav bar when scrolling to them */
+/* When a nav link is clicked, lines the section title up right under the sticky nav bar.
+   The offset is the nav height + a small gap - the section's top padding */
+:root {
+    --nav-height: 86px;
+    --title-gap: 20px;
+}
+
 section {
-    scroll-margin-top: 100px;
+    scroll-margin-top: calc(var(--nav-height) + var(--title-gap) - 80px);
+}
+
+.home {
+    scroll-margin-top: var(--nav-height);
+}
+
+.about-us {
+    scroll-margin-top: calc(var(--nav-height) + var(--title-gap) - 100px);
+}
+
+@media (max-width: 900px) {
+    :root {
+        --nav-height: 66px;
+    }
+
+    section,
+    .about-us {
+        scroll-margin-top: calc(var(--nav-height) + var(--title-gap) - 60px);
+    }
+
+    .home {
+        scroll-margin-top: var(--nav-height);
+    }
+}
+
+/* ---- Scroll Animations ---- */
+
+/* Elements with data-reveal start hidden and slide in when scrolled into view (script.js adds .revealed).
+   Only applies when JS is running and the visitor hasn't asked for reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+    .js-reveal [data-reveal] {
+        opacity: 0;
+        transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .js-reveal [data-reveal="up"] {
+        transform: translateY(40px);
+    }
+
+    .js-reveal [data-reveal="left"] {
+        transform: translateX(-80px);
+    }
+
+    .js-reveal [data-reveal="right"] {
+        transform: translateX(80px);
+    }
+
+    .js-reveal [data-reveal].revealed {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Home title and subtitle rise in when the page loads */
+    .home h1,
+    .home p {
+        animation: rise-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .home p {
+        animation-delay: 0.25s;
+    }
+}
+
+@keyframes rise-in {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* Stops sliding elements from making the page scroll sideways before they arrive */
+.about-us,
+.team,
+.calendar,
+.projects {
+    overflow-x: clip;
+}
+
+/* Nav bar gets a shadow once you scroll down */
+header {
+    transition: box-shadow 0.3s ease;
+}
+
+header.scrolled {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Buttons lift a little on hover */
+.join-btn {
+    display: inline-block;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.join-btn:hover {
+    transform: translateY(-2px);
+}
+
+.slider-arrow {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.slider-arrow:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.social-link .social-icon {
+    transition: fill 0.2s ease, transform 0.2s ease;
+}
+
+.social-link:hover .social-icon {
+    transform: translateY(-2px);
+}
+
+/* ---- Small laptops, keeps the nav from crowding ---- */
+
+@media (max-width: 1150px) {
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-links a,
+    .dropdown-toggle {
+        font-size: 20px;
+    }
 }
 
 /* ---- Tablets and phones ---- */
@@ -499,7 +743,7 @@ section {
     }
 
     .logo img {
-        width: 55px;
+        height: 46px;
     }
 
     .menu-toggle {
@@ -520,7 +764,7 @@ section {
         right: 0;
         flex-direction: column;
         gap: 0;
-        background-color: #003C6B;
+        background-color: var(--blue);
         padding: 10px 0;
     }
 
@@ -534,9 +778,40 @@ section {
         font-size: 20px;
     }
 
+    /* Socials opens inside the menu instead of floating */
+    .dropdown-toggle {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 20px;
+    }
+
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        min-width: 0;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-links .dropdown-menu a {
+        padding: 12px 40px;
+        color: var(--white);
+    }
+
+    .nav-links .dropdown-menu a:hover {
+        background-color: transparent;
+        color: var(--yellow);
+    }
+
+    .dropdown-icon {
+        fill: var(--white);
+    }
+
     .home {
-        min-height: calc(100vh - 64px);
-        min-height: calc(100svh - 64px);
+        min-height: calc(100vh - 66px);
+        min-height: calc(100svh - 66px);
     }
 
     .about-us {
@@ -559,7 +834,11 @@ section {
     }
 
     .about-us-text p {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
+    }
+
+    .about-us-text h3 {
+        font-size: 1.25rem;
     }
 
     .slider {
@@ -617,4 +896,5 @@ section {
     body.fade-out { transition: none; }
     .slider-track { transition: none; }
     .menu-toggle span { transition: none; }
+    .dropdown-arrow { transition: none; }
 }
