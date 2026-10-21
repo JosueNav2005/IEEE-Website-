@@ -21,6 +21,7 @@ header {
 }
 
 nav {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,6 +62,41 @@ nav {
     background-color: #a9c9e8;
 }
 
+/* Hamburger menu button, hidden until the screen gets small */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Turns the three lines into an X when the menu is open */
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 
 /* ---- Home Section ---- */
 
@@ -69,20 +105,24 @@ nav {
     background-position: center;
     background-size: cover;
     text-align: center;
-    padding: 350px;
+    /* Fills the screen below the nav bar (svh keeps it right on phones when the address bar shows) */
+    min-height: calc(100vh - 73px);
+    min-height: calc(100svh - 73px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
 }
 
 .home h1 {
-    transform: translateY(-310px);
     color: #003C6B;
-    font-size: 80px;
+    font-size: clamp(2.5rem, 8vw, 80px);
     font-weight: 800;
 }
 
 .home p {
-    transform: translateY(-320px);
     color: #003C6B;
-    font-size: 50px;
+    font-size: clamp(1.4rem, 4.5vw, 50px);
     margin-top: 10px;
 }
 
@@ -109,7 +149,7 @@ nav {
 }
 
 .about-us-text p {
-    transform: translateY(20px);
+    margin-top: 30px;
     color: #003C6B;
     font-size: 30px;
 }
@@ -203,7 +243,7 @@ nav {
     padding: 80px 40px;
 }
 
-.calendar h3 {
+.calendar h2 {
     color: #003C6B;
     font-size: 50px;
     text-align: center;
@@ -217,7 +257,14 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px;
+    padding: 60px 0 0;
+}
+
+.calendar-wrapper iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    border: 0;
 }
 
 .team {
@@ -443,9 +490,131 @@ section {
     scroll-margin-top: 100px;
 }
 
+/* ---- Tablets and phones ---- */
+
+@media (max-width: 900px) {
+    nav {
+        padding: 10px 20px;
+        gap: 15px;
+    }
+
+    .logo img {
+        width: 55px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Pushes the Join button and menu button to the right */
+    .join-btn {
+        margin-left: auto;
+    }
+
+    /* Nav links become a drop-down under the bar */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background-color: #003C6B;
+        padding: 10px 0;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 20px;
+    }
+
+    .home {
+        min-height: calc(100vh - 64px);
+        min-height: calc(100svh - 64px);
+    }
+
+    .about-us {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 60px 20px;
+    }
+
+    .about-us-text {
+        width: 100%;
+    }
+
+    .about-us-text h2,
+    .calendar h2,
+    .team h2 {
+        font-size: 2.2rem;
+        text-decoration-thickness: 6px;
+        text-underline-offset: 10px;
+    }
+
+    .about-us-text p {
+        font-size: 1.2rem;
+    }
+
+    .slider {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 20px;
+    }
+
+    .team,
+    .calendar,
+    .projects {
+        padding: 60px 20px;
+    }
+
+    .calendar-wrapper {
+        padding-top: 40px;
+    }
+
+    .calendar-wrapper iframe {
+        height: 450px;
+    }
+
+    .projects h1 {
+        font-size: 2.8rem;
+        text-decoration-thickness: 6px;
+        text-underline-offset: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .join-btn {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    .slider-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .team-grid {
+        gap: 20px;
+    }
+
+    .team-card {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     body { animation: none; }
     body.fade-out { transition: none; }
     .slider-track { transition: none; }
+    .menu-toggle span { transition: none; }
 }

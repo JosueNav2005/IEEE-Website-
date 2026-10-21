@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UC IEEE Student Branch</title>
+    <title>IEEE at UC Santa Cruz</title>
+    <meta name="description" content="IEEE Student Branch at UC Santa Cruz. Hands-on engineering projects, workshops, and events for UCSC students.">
+    <meta property="og:title" content="IEEE at UC Santa Cruz">
+    <meta property="og:description" content="IEEE Student Branch at UC Santa Cruz. Hands-on engineering projects, workshops, and events for UCSC students.">
+    <meta property="og:image" content="assets/img/logo.png">
+    <link rel="icon" type="image/png" href="assets/img/logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,6 +29,13 @@
         </ul>
 
         <a href="https://forms.gle/xPw1YNsKFqso948z6" target="_blank" class="join-btn">Join IEEE</a>
+
+        <!-- Menu button, only shows on small screens -->
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 </header>
 
@@ -257,16 +269,12 @@
 
 <!-- The calendar section embeds a Google Calendar to display upcoming events and activities -->
 <section id="calendar" class="calendar" >
-    <h3>Stay Connected</h3>
+    <h2>Events</h2>
     <div class="calendar-wrapper" >
-    <iframe src="https://calendar.google.com/calendar/embed?src=ieeeucsc26%40gmail.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    <iframe src="https://calendar.google.com/calendar/embed?src=ieeeucsc26%40gmail.com&ctz=America%2FLos_Angeles" title="IEEE UCSC events calendar" loading="lazy"></iframe>
     </div>
 </section>
 
-
-<script src="script.js"></script>
-</body>
-</html>
 
 <!-- The footer section contains the logo, name, social media links, and copyright information -->
  
@@ -291,6 +299,6 @@
     <p class="footer-copyright">&copy; 2026 IEEE Student Branch at UC Santa Cruz. All rights reserved.</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
-
