@@ -477,12 +477,12 @@ nav {
     text-align: center;
     padding: 80px 40px;
     background-color: var(--white);
-
 }
 
-.team h2 {
+/* Team page title, same size as the Projects page title */
+.team h1 {
     color: var(--blue);
-    font-size: 3rem;
+    font-size: 80px;
     font-weight: 800;
     text-decoration: underline;
     text-decoration-color: var(--yellow);
@@ -647,6 +647,93 @@ nav {
     margin-top: 20px;
 }
 
+/* ---- Connect With Us Section ---- */
+
+.connect {
+    background-color: var(--white);
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.connect h2 {
+    color: var(--blue);
+    font-size: 50px;
+    text-decoration: underline;
+    text-decoration-color: var(--yellow);
+    text-underline-offset: 13px;
+    text-decoration-thickness: 10px;
+}
+
+.connect-subtitle {
+    color: var(--black);
+    font-size: 1.2rem;
+    margin: 30px 0 45px;
+}
+
+.connect-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.connect-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 30px;
+    background-color: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.connect-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    fill: var(--blue);
+}
+
+.connect-body h3 {
+    color: var(--black);
+    font-size: 1.4rem;
+}
+
+.connect-body p {
+    color: var(--black);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 10px 0 20px;
+}
+
+.connect-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.connect-btn:hover {
+    background-color: var(--yellow);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+
+.connect-btn-icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
 /* ---- Projects Page ---- */
 
 .projects {
@@ -772,6 +859,7 @@ section {
 .about-us,
 .team,
 .calendar,
+.connect,
 .projects {
     overflow-x: clip;
 }
@@ -917,7 +1005,7 @@ header.scrolled {
 
     .about-us-text h2,
     .calendar h2,
-    .team h2 {
+    .connect h2 {
         font-size: 2.2rem;
         text-decoration-thickness: 6px;
         text-underline-offset: 10px;
@@ -939,8 +1027,13 @@ header.scrolled {
 
     .team,
     .calendar,
+    .connect,
     .projects {
         padding: 60px 20px;
+    }
+
+    .connect-grid {
+        grid-template-columns: 1fr;
     }
 
 
@@ -948,7 +1041,8 @@ header.scrolled {
         height: 450px;
     }
 
-    .projects h1 {
+    .projects h1,
+    .team h1 {
         font-size: 2.8rem;
         text-decoration-thickness: 6px;
         text-underline-offset: 10px;
@@ -967,13 +1061,46 @@ header.scrolled {
         font-size: 18px;
     }
 
+    /* Two officer cards per row on phones */
     .team-grid {
-        gap: 20px;
+        gap: 14px;
     }
 
     .team-card {
-        width: 100%;
-        max-width: 280px;
+        width: calc(50% - 7px);
+        height: 270px;
+    }
+
+    .card-front img {
+        height: 155px;
+    }
+
+    .card-front h3 {
+        font-size: 1rem;
+        margin-top: 10px;
+        padding: 0 6px;
+    }
+
+    .card-front p {
+        font-size: 0.8rem;
+        padding: 0 6px;
+    }
+
+    .card-back {
+        padding: 12px;
+    }
+
+    .card-back h3 {
+        font-size: 1rem;
+    }
+
+    .card-intro {
+        font-size: 0.8rem;
+    }
+
+    .connect-card {
+        padding: 22px;
+        gap: 14px;
     }
 }
 
