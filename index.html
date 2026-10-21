@@ -310,6 +310,29 @@
 <!-- The calendar section embeds a Google Calendar to display upcoming events and activities -->
 <section id="calendar" class="calendar" >
     <h2 data-reveal="up">Events</h2>
+
+    <!-- Upcoming events are filled in automatically from the club Google Calendar by script.js.
+         Add an event to the calendar and it shows up here. Only the next 3 are shown -->
+    <h3 class="events-heading" data-reveal="up">Upcoming Events</h3>
+    <div class="event-grid" data-reveal="up"></div>
+    <p class="events-empty" hidden>No upcoming events right now. Check the calendar below or join our Discord to hear about the next one.</p>
+
+    <!-- Layout for one event card, script.js copies it for each event -->
+    <template id="event-card-template">
+        <a class="event-card" target="_blank">
+            <div class="event-date">
+                <span class="event-month"></span>
+                <span class="event-day"></span>
+            </div>
+            <div class="event-info">
+                <h4 class="event-title"></h4>
+                <p class="event-meta"></p>
+                <p class="event-desc"></p>
+            </div>
+        </a>
+    </template>
+
+    <h3 class="events-heading" data-reveal="up">Full Calendar</h3>
     <div class="calendar-wrapper" data-reveal="up">
     <iframe src="https://calendar.google.com/calendar/embed?src=ieeeucsc26%40gmail.com&ctz=America%2FLos_Angeles" title="IEEE UCSC events calendar" loading="lazy"></iframe>
     </div>

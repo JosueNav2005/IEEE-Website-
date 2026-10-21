@@ -150,3 +150,90 @@ function updateHeaderShadow() {
 
 window.addEventListener('scroll', updateHeaderShadow, { passive: true });
 updateHeaderShadow();
+
+
+//Fills the Upcoming Events cards with the next 3 events from the club Google Calendar
+
+//Paste the Google API key here (see README). The calendar has to be public for this to work
+const GOOGLE_API_KEY = 'AIzaSyBzO8g4s3YSlPPHOoSrJnKrTvv9Uah63PI';
+const CALENDAR_ID = 'ieeeucsc26@gmail.com';
+const CLUB_TIME_ZONE = 'America/Los_Angeles';
+
+const eventGrid = document.querySelector('.event-grid');
+
+if (eventGrid) {
+    loadUpcomingEvents();
+}
+
+async function loadUpcomingEvents() {
+    const emptyMessage = document.querySelector('.events-empty');
+
+    try {
+        if (!GOOGLE_API_KEY) {
+            throw new Error('No Google API key set in script.js');
+        }
+
+        const params = new URLSearchParams({
+            key: GOOGLE_API_KEY,
+            timeMin: new Date().toISOString(),
+            singleEvents: 'true',
+            orderBy: 'startTime',
+            maxResults: '3',
+        });
+        const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?${params}`;
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`Google Calendar returned ${response.status}`);
+        }
+
+        const data = await response.json();
+        const events = data.items || [];
+
+        if (events.length === 0) {
+            emptyMessage.hidden = false;
+            return;
+        }
+
+        events.forEach(event => eventGrid.appendChild(buildEventCard(event)));
+    } catch (error) {
+        console.warn('Could not load upcoming events:', error);
+        emptyMessage.hidden = false;
+    }
+}
+
+function buildEventCard(event) {
+    const template = document.getElementById('event-card-template');
+    const card = template.content.firstElementChild.cloneNode(true);
+
+    //All-day events only have a date, timed events have a dateTime
+    const isAllDay = !event.start.dateTime;
+    const start = isAllDay ? new Date(event.start.date + 'T12:00:00') : new Date(event.start.dateTime);
+    const zone = isAllDay ? undefined : CLUB_TIME_ZONE;
+
+    const month = start.toLocaleDateString('en-US', { month: 'short', timeZone: zone });
+    const day = start.toLocaleDateString('en-US', { day: 'numeric', timeZone: zone });
+    const time = isAllDay ? 'All day' : start.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: zone });
+
+    card.href = event.htmlLink;
+    card.querySelector('.event-month').textContent = month;
+    card.querySelector('.event-day').textContent = day;
+    card.querySelector('.event-title').textContent = event.summary || 'IEEE Event';
+    card.querySelector('.event-meta').textContent = `${time} · ${event.location || 'Location TBA'}`;
+
+    const description = shortText(event.description || '', 140);
+    if (description) {
+        card.querySelector('.event-desc').textContent = description;
+    } else {
+        card.querySelector('.event-desc').remove();
+    }
+
+    return card;
+}
+
+//Calendar descriptions can contain HTML, this turns it into plain text and trims it to a short preview
+function shortText(html, maxLength) {
+    const spaced = html.replace(/<br\s*\/?>|<\/(p|div|li)>/gi, ' ');
+    const text = new DOMParser().parseFromString(spaced, 'text/html').body.textContent.replace(/\s+/g, ' ').trim();
+    return text.length > maxLength ? text.slice(0, maxLength).trimEnd() + '…' : text;
+}

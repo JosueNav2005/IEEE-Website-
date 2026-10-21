@@ -17,6 +17,11 @@ html {
     box-sizing: border-box;
 }
 
+/* Makes the hidden attribute win over display: flex/grid */
+[hidden] {
+    display: none !important;
+}
+
 body {
     background-color: var(--white);
     font-family: Arial, sans-serif;
@@ -369,11 +374,96 @@ nav {
     text-decoration-thickness: 10px;
 }
 
+.events-heading {
+    color: var(--black);
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 50px 0 25px;
+}
+
+/* ---- Upcoming Event Cards ---- */
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.event-card {
+    display: flex;
+    text-decoration: none;
+    background-color: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.25s ease, translate 0.25s ease;
+}
+
+/* Uses translate (not transform) so it doesn't fight the scroll animation */
+.event-card:hover {
+    translate: 0 -4px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 80px;
+    background-color: var(--yellow);
+    color: var(--black);
+}
+
+.event-month {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.event-day {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.event-info {
+    padding: 18px 20px;
+}
+
+.event-info h4 {
+    color: var(--blue);
+    font-size: 1.2rem;
+}
+
+.event-meta {
+    color: var(--black);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.event-desc {
+    color: var(--black);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+.events-empty {
+    color: var(--black);
+    font-size: 1.05rem;
+    text-align: center;
+}
+
 .calendar-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 0 0;
 }
 
 .calendar-wrapper iframe {
@@ -853,9 +943,6 @@ header.scrolled {
         padding: 60px 20px;
     }
 
-    .calendar-wrapper {
-        padding-top: 40px;
-    }
 
     .calendar-wrapper iframe {
         height: 450px;
