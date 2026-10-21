@@ -39,7 +39,7 @@ window.addEventListener('pageshow', () => {
 });
 
 
-//Slides the About Us photos when the arrows or dots are clicked, wraps around at the ends
+//Slides the About Us photos on its own every few seconds, and when the arrows or dots are clicked. Wraps around at the ends
 
 const slider = document.querySelector('.slider');
 
@@ -47,7 +47,9 @@ if (slider) {
     const track = slider.querySelector('.slider-track');
     const slides = track.querySelectorAll('img');
     const dots = slider.querySelectorAll('.slider-dot');
+    const autoplayDelay = 4000;
     let currentSlide = 0;
+    let autoplayTimer = null;
 
     function showSlide(index) {
         currentSlide = (index + slides.length) % slides.length;
@@ -55,9 +57,32 @@ if (slider) {
         dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
     }
 
-    slider.querySelector('.prev').addEventListener('click', () => showSlide(currentSlide - 1));
-    slider.querySelector('.next').addEventListener('click', () => showSlide(currentSlide + 1));
-    dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+    //Clicking an arrow or dot restarts the countdown so the photo doesn't change right after you pick it
+    function goTo(index) {
+        showSlide(index);
+        startAutoplay();
+    }
+
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(() => showSlide(currentSlide + 1), autoplayDelay);
+    }
+
+    function stopAutoplay() {
+        clearInterval(autoplayTimer);
+    }
+
+    slider.querySelector('.prev').addEventListener('click', () => goTo(currentSlide - 1));
+    slider.querySelector('.next').addEventListener('click', () => goTo(currentSlide + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    //Skips autoplay for visitors who asked their device for less motion
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        //Pauses while the mouse is over the photo so people can look at it
+        slider.addEventListener('mouseenter', stopAutoplay);
+        slider.addEventListener('mouseleave', startAutoplay);
+        startAutoplay();
+    }
 }
 
 
